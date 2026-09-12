@@ -7,13 +7,6 @@ const ROTULOS_SERIE = {
   "3_ano": "3º ano",
 };
 
-const ROTULOS_TIPO = {
-  pdf: "PDF",
-  video: "Vídeo",
-  lista: "Lista",
-  link: "Link",
-};
-
 async function carregarDados() {
   const [curriculoResp, topicosResp] = await Promise.all([
     fetch("data/curriculo.json"),
@@ -39,18 +32,24 @@ function popularSeletorSeries(curriculo, anoSelecionado, seletorSerie) {
     .join("");
 }
 
-function renderizarMateriais(materiais) {
-  return materiais
-    .map(
-      (m) => `
-      <li>
-        <a href="${m.url}" target="_blank" rel="noopener">
-          <span class="tag-tipo ${m.tipo}">${ROTULOS_TIPO[m.tipo] || m.tipo}</span>
-          ${m.titulo}
-        </a>
-      </li>`
-    )
-    .join("");
+function linhaAula(aula, numero) {
+  const temLista = aula.exercicios_url && aula.exercicios_url !== "#" && aula.n_exercicios > 0;
+  const colunaExercicios = temLista
+    ? `<a href="${aula.exercicios_url}" target="_blank" rel="noopener">
+         <span class="rotulo-completo">${aula.n_exercicios} exercícios</span>
+         <span class="rotulo-curto">${aula.n_exercicios} ex.</span>
+       </a>`
+    : `<span class="sem-lista">
+         <span class="rotulo-completo">sem lista ainda</span>
+         <span class="rotulo-curto">sem lista</span>
+       </span>`;
+
+  return `
+    <tr>
+      <td class="col-numero">${numero}</td>
+      <td class="col-titulo"><a href="${aula.conteudo_url}" target="_blank" rel="noopener">${aula.titulo}</a></td>
+      <td class="col-exercicios">${colunaExercicios}</td>
+    </tr>`;
 }
 
 function renderizarTopicos(idsTopicos, topicos, container) {
@@ -60,39 +59,27 @@ function renderizarTopicos(idsTopicos, topicos, container) {
   }
 
   container.innerHTML = idsTopicos
-    .map((id, indice) => {
+    .map((id) => {
       const t = topicos[id];
       if (!t) {
-        return `<div class="topico"><p class="aviso-vazio">Conteúdo "${id}" não encontrado em topicos.json.</p></div>`;
+        return `<p class="aviso-vazio">Conteúdo "${id}" não encontrado em topicos.json.</p>`;
       }
+      const linhas = (t.aulas || [])
+        .map((aula, i) => linhaAula(aula, i + 1))
+        .join("");
+
       return `
-        <div class="topico" data-aberto="false">
-          <button class="topico-cabecalho" type="button" aria-expanded="false">
-            <span class="topico-ordem">${String(indice + 1).padStart(2, "0")}</span>
-            <span class="topico-titulo-bloco">
-              <h3>${t.titulo}</h3>
-              <p>${t.resumo}</p>
-            </span>
-            <span class="topico-toggle">ver materiais</span>
-          </button>
-          <div class="topico-materiais">
-            <ul>${renderizarMateriais(t.materiais || [])}</ul>
+        <div class="grupo-topico">
+          <div class="grupo-topico-titulo">
+            <h3>${t.titulo}</h3>
+            <span class="contagem">${(t.aulas || []).length} aula(s)</span>
           </div>
+          <table class="tabela-aulas">
+            <tbody>${linhas}</tbody>
+          </table>
         </div>`;
     })
     .join("");
-
-  container.querySelectorAll(".topico-cabecalho").forEach((botao) => {
-    botao.addEventListener("click", () => {
-      const topico = botao.closest(".topico");
-      const aberto = topico.getAttribute("data-aberto") === "true";
-      topico.setAttribute("data-aberto", String(!aberto));
-      botao.setAttribute("aria-expanded", String(!aberto));
-      botao.querySelector(".topico-toggle").textContent = aberto
-        ? "ver materiais"
-        : "fechar";
-    });
-  });
 }
 
 async function iniciar() {
