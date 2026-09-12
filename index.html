@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professor de Física — Higor F. P. Castro</title>
+  <meta name="description" content="Conteúdos de Física organizados por série e ano letivo, com resumos, videoaulas e listas de exercícios." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">Física<span>.</span> Prof. Higor Castro</div>
+      <nav class="site-nav">
+        <a href="#conteudos">Conteúdos</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Física não é decorar fórmula. É entender o movimento.</h1>
+        <p class="lede">
+          Aqui você encontra o resumo teórico, as videoaulas e as listas de cada
+          conteúdo da sua série — organizados por ano letivo, sempre atualizados
+          conforme o que estamos estudando em sala.
+        </p>
+        <div class="hero-actions">
+          <a href="#conteudos" class="btn btn-primary">Ver conteúdos</a>
+          <a href="#sobre" class="btn btn-secondary">Sobre o professor</a>
+        </div>
+      </div>
+
+      <svg class="hero-diagram" viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de trajetória de um projétil, com decomposição do vetor velocidade em componentes horizontal e vertical">
+        <line x1="30" y1="300" x2="450" y2="300" stroke="#3E4A52" stroke-width="1.5" />
+        <line x1="30" y1="300" x2="30" y2="40" stroke="#3E4A52" stroke-width="1.5" />
+
+        <path d="M 30 300 Q 240 20 450 300" fill="none" stroke="#16324F" stroke-width="2.5" />
+
+        <circle cx="240" cy="110" r="6" fill="#C1443C" />
+
+        <line x1="240" y1="110" x2="310" y2="110" stroke="#E2A63B" stroke-width="2.5" marker-end="url(#seta-amber)" />
+        <line x1="240" y1="110" x2="240" y2="60" stroke="#C1443C" stroke-width="2.5" marker-end="url(#seta-vetor)" />
+        <line x1="240" y1="110" x2="300" y2="70" stroke="#16324F" stroke-width="2.5" marker-end="url(#seta-ink)" />
+
+        <text x="315" y="115" font-family="IBM Plex Mono, monospace" font-size="15" fill="#E2A63B">vx</text>
+        <text x="248" y="58" font-family="IBM Plex Mono, monospace" font-size="15" fill="#C1443C">vy</text>
+        <text x="305" y="65" font-family="IBM Plex Mono, monospace" font-size="15" fill="#16324F">v</text>
+
+        <defs>
+          <marker id="seta-amber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#E2A63B" />
+          </marker>
+          <marker id="seta-vetor" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#C1443C" />
+          </marker>
+          <marker id="seta-ink" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#16324F" />
+          </marker>
+        </defs>
+      </svg>
+    </div>
+  </section>
+
+  <section class="conteudos" id="conteudos">
+    <div class="wrap">
+      <div class="conteudos-heading">
+        <h2>Conteúdos por série</h2>
+      </div>
+
+      <div class="filtros">
+        <div class="campo-filtro">
+          <label for="seletor-ano">Ano letivo</label>
+          <select id="seletor-ano"></select>
+        </div>
+        <div class="campo-filtro">
+          <label for="seletor-serie">Série</label>
+          <select id="seletor-serie"></select>
+        </div>
+      </div>
+
+      <div class="lista-topicos" id="lista-topicos">
+        <p class="aviso-vazio">Carregando conteúdos…</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <div class="wrap">
+      <div>
+        <h2>Sobre</h2>
+      </div>
+      <div>
+        <p>
+          Professor de Física do Ensino Médio. Este espaço reúne o material de
+          apoio das aulas — resumos, videoaulas e listas de exercícios —
+          organizado por série e atualizado conforme o andamento do conteúdo
+          em cada ano letivo.
+        </p>
+        <p>
+          Dúvidas sobre algum conteúdo? Procure o professor em sala de aula ou
+          pelo canal de contato da escola.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Prof. Higor F. P. Castro — Física</span>
+      <span>Conteúdo atualizado periodicamente</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
