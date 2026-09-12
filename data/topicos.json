@@ -1,65 +1,58 @@
 {
-  "_leia_me": "Cada chave aqui e um 'id' de topico, usado em curriculo.json. Para adicionar um topico novo: crie um bloco com um id novo (sem espacos ou acentos, ex: 'gravitacao'), preencha titulo/resumo/materiais, e depois referencie esse id em curriculo.json na serie/ano desejado. O campo 'tipo' de cada material aceita: pdf, video, lista, link.",
+  "_leia_me": "Cada topico agora tem uma lista de 'aulas'. Cada aula tem: titulo (o texto do link), conteudo_url (para onde o titulo leva quando clicado — pode ser um PDF, um Google Docs/Slides, uma pagina de resumo, etc.), exercicios_url (link da lista de exercicios) e n_exercicios (numero de exercicios, so para mostrar no rotulo). Se uma aula ainda nao tiver lista de exercicios, deixe exercicios_url como '#' e n_exercicios como 0.",
 
   "introducao_fisica": {
     "titulo": "Introdução à Física",
-    "resumo": "O que a física estuda, grandezas físicas, unidades de medida e notação científica.",
-    "materiais": [
-      { "tipo": "pdf", "titulo": "Resumo: grandezas e unidades", "url": "#" },
-      { "tipo": "video", "titulo": "Aula: notação científica na prática", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 1 — conversão de unidades", "url": "#" }
+    "aulas": [
+      { "titulo": "Grandezas físicas, unidades de medida e SI", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 6 },
+      { "titulo": "Notação científica e ordem de grandeza", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 4 }
     ]
   },
 
   "cinematica": {
     "titulo": "Cinemática",
-    "resumo": "Movimento uniforme e uniformemente variado: posição, velocidade e aceleração.",
-    "materiais": [
-      { "tipo": "pdf", "titulo": "Resumo teórico: MU e MUV", "url": "#" },
-      { "tipo": "video", "titulo": "Aula: gráficos de posição e velocidade", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 2 — MUV", "url": "#" },
-      { "tipo": "link", "titulo": "Simulador de lançamento de projétil", "url": "#" }
+    "aulas": [
+      { "titulo": "Introdução à cinemática", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 4 },
+      { "titulo": "Movimento retilíneo uniforme (MRU)", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 15 },
+      { "titulo": "Movimento retilíneo uniformemente variado (MRUV)", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 10 },
+      { "titulo": "Lançamento horizontal e oblíquo", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 12 }
     ]
   },
 
   "leis_newton": {
     "titulo": "Leis de Newton",
-    "resumo": "Inércia, princípio fundamental da dinâmica e ação e reação, com aplicações em blocos, planos inclinados e sistemas.",
-    "materiais": [
-      { "tipo": "pdf", "titulo": "Resumo teórico: as três leis", "url": "#" },
-      { "tipo": "video", "titulo": "Aula: diagrama de forças passo a passo", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 3 — plano inclinado", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 4 — sistemas de blocos", "url": "#" }
+    "aulas": [
+      { "titulo": "Introdução à dinâmica e primeira lei de Newton", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 6 },
+      { "titulo": "A segunda e a terceira leis de Newton", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 15 },
+      { "titulo": "Plano inclinado sem atrito", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 9 },
+      { "titulo": "Força de atrito estático e dinâmico", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 9 }
     ]
   },
 
   "energia_trabalho": {
     "titulo": "Energia e Trabalho",
-    "resumo": "Trabalho de uma força, energia cinética, potencial e conservação de energia mecânica.",
-    "materiais": [
-      { "tipo": "pdf", "titulo": "Resumo teórico: conservação de energia", "url": "#" },
-      { "tipo": "video", "titulo": "Aula: exercícios de energia mecânica", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 5 — trabalho e energia", "url": "#" }
+    "aulas": [
+      { "titulo": "Trabalho de uma força", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 7 },
+      { "titulo": "Energia cinética e potencial", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 8 },
+      { "titulo": "Conservação da energia mecânica", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 17 }
     ]
   },
 
   "eletrodinamica": {
     "titulo": "Eletrodinâmica",
-    "resumo": "Corrente elétrica, resistores, associações e potência elétrica.",
-    "materiais": [
-      { "tipo": "pdf", "titulo": "Resumo teórico: circuitos elétricos", "url": "#" },
-      { "tipo": "video", "titulo": "Aula: associação de resistores", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 6 — circuitos", "url": "#" }
+    "aulas": [
+      { "titulo": "Primeira lei de Ohm", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 10 },
+      { "titulo": "Segunda lei de Ohm", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 5 },
+      { "titulo": "Circuitos elétricos e associação de resistores", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 15 }
     ]
   },
 
   "ondulatoria": {
     "titulo": "Ondulatória",
-    "resumo": "Características das ondas, ondas sonoras e fenômenos ondulatórios.",
-    "materiais": [
-      { "tipo": "pdf", "titulo": "Resumo teórico: ondas", "url": "#" },
-      { "tipo": "video", "titulo": "Aula: interferência e difração", "url": "#" },
-      { "tipo": "lista", "titulo": "Lista 7 — ondas", "url": "#" }
+    "aulas": [
+      { "titulo": "Introdução às ondas", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 5 },
+      { "titulo": "Equação fundamental da ondulatória", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 12 },
+      { "titulo": "Fenômenos ondulatórios: reflexão, refração e difração", "conteudo_url": "#", "exercicios_url": "#", "n_exercicios": 19 }
     ]
   }
 }
