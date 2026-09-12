@@ -1,0 +1,65 @@
+{
+  "_leia_me": "Cada chave aqui e um 'id' de topico, usado em curriculo.json. Para adicionar um topico novo: crie um bloco com um id novo (sem espacos ou acentos, ex: 'gravitacao'), preencha titulo/resumo/materiais, e depois referencie esse id em curriculo.json na serie/ano desejado. O campo 'tipo' de cada material aceita: pdf, video, lista, link.",
+
+  "introducao_fisica": {
+    "titulo": "Introdução à Física",
+    "resumo": "O que a física estuda, grandezas físicas, unidades de medida e notação científica.",
+    "materiais": [
+      { "tipo": "pdf", "titulo": "Resumo: grandezas e unidades", "url": "#" },
+      { "tipo": "video", "titulo": "Aula: notação científica na prática", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 1 — conversão de unidades", "url": "#" }
+    ]
+  },
+
+  "cinematica": {
+    "titulo": "Cinemática",
+    "resumo": "Movimento uniforme e uniformemente variado: posição, velocidade e aceleração.",
+    "materiais": [
+      { "tipo": "pdf", "titulo": "Resumo teórico: MU e MUV", "url": "#" },
+      { "tipo": "video", "titulo": "Aula: gráficos de posição e velocidade", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 2 — MUV", "url": "#" },
+      { "tipo": "link", "titulo": "Simulador de lançamento de projétil", "url": "#" }
+    ]
+  },
+
+  "leis_newton": {
+    "titulo": "Leis de Newton",
+    "resumo": "Inércia, princípio fundamental da dinâmica e ação e reação, com aplicações em blocos, planos inclinados e sistemas.",
+    "materiais": [
+      { "tipo": "pdf", "titulo": "Resumo teórico: as três leis", "url": "#" },
+      { "tipo": "video", "titulo": "Aula: diagrama de forças passo a passo", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 3 — plano inclinado", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 4 — sistemas de blocos", "url": "#" }
+    ]
+  },
+
+  "energia_trabalho": {
+    "titulo": "Energia e Trabalho",
+    "resumo": "Trabalho de uma força, energia cinética, potencial e conservação de energia mecânica.",
+    "materiais": [
+      { "tipo": "pdf", "titulo": "Resumo teórico: conservação de energia", "url": "#" },
+      { "tipo": "video", "titulo": "Aula: exercícios de energia mecânica", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 5 — trabalho e energia", "url": "#" }
+    ]
+  },
+
+  "eletrodinamica": {
+    "titulo": "Eletrodinâmica",
+    "resumo": "Corrente elétrica, resistores, associações e potência elétrica.",
+    "materiais": [
+      { "tipo": "pdf", "titulo": "Resumo teórico: circuitos elétricos", "url": "#" },
+      { "tipo": "video", "titulo": "Aula: associação de resistores", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 6 — circuitos", "url": "#" }
+    ]
+  },
+
+  "ondulatoria": {
+    "titulo": "Ondulatória",
+    "resumo": "Características das ondas, ondas sonoras e fenômenos ondulatórios.",
+    "materiais": [
+      { "tipo": "pdf", "titulo": "Resumo teórico: ondas", "url": "#" },
+      { "tipo": "video", "titulo": "Aula: interferência e difração", "url": "#" },
+      { "tipo": "lista", "titulo": "Lista 7 — ondas", "url": "#" }
+    ]
+  }
+}
