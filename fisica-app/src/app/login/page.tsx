@@ -22,7 +22,7 @@ export default function LoginPage() {
     setCarregando(false);
 
     if (error) {
-      setErro("E-mail ou senha incorretos.");
+      setErro(`Erro do Supabase: ${error.message} (código: ${(error as any).status ?? "?"})`);
       return;
     }
 
