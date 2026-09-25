@@ -93,9 +93,17 @@ que estiver como "Publicado".
 
 Rode `supabase/migracao_storage.sql` no SQL Editor — ela cria o espaço de
 armazenamento de arquivos no Supabase (gratuito até 1GB no plano free).
-Depois disso, ao adicionar um material do tipo **PDF** ou **Imagem**, use
-o campo "Ou envie um arquivo" para anexar direto do seu computador, em
-vez de precisar hospedar em outro lugar e colar um link.
+
+Isso já está disponível em **todo lugar onde há um campo de texto no
+painel**, não só nos materiais dos tópicos:
+
+- Ao adicionar um material do tipo **PDF** ou **Imagem** (dentro de um
+  tópico): campo "Ou envie um arquivo".
+- Nas **páginas estáticas** (Cronograma, Horário, Astronomia, Dicas,
+  Contato) e nas **Notícias**: um botão **"📎 Anexar"** logo abaixo do
+  campo de texto/imagem de capa — escolha o arquivo, clique em Anexar, e
+  o link (ou a imagem, já formatada em HTML) é inserido automaticamente
+  no texto, sem precisar hospedar em outro lugar.
 
 ### Como incorporar slides (Google Slides, Canva, PowerPoint)
 

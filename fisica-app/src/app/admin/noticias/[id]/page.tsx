@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect, notFound } from "next/navigation";
+import AnexarArquivo from "@/app/components/AnexarArquivo";
 
 async function atualizarNoticia(formData: FormData) {
   "use server";
@@ -55,12 +56,14 @@ export default async function AdminNoticiaPage({
           <input id="resumo" name="resumo" type="text" defaultValue={noticia.resumo ?? ""} />
         </div>
         <div className="field">
-          <label htmlFor="capa_url">Imagem de capa (URL, opcional)</label>
+          <label htmlFor="capa_url">Imagem de capa (opcional)</label>
           <input id="capa_url" name="capa_url" type="text" defaultValue={noticia.capa_url ?? ""} />
+          <AnexarArquivo targetId="capa_url" modo="url" />
         </div>
         <div className="field">
           <label htmlFor="corpo_html">Conteúdo</label>
           <textarea id="corpo_html" name="corpo_html" rows={12} defaultValue={noticia.corpo_html} />
+          <AnexarArquivo targetId="corpo_html" modo="html" />
         </div>
         <label style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13.5, marginBottom: 16 }}>
           <input type="checkbox" name="publicado" defaultChecked={noticia.publicado} style={{ width: "auto" }} />

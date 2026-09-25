@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import AnexarArquivo from "@/app/components/AnexarArquivo";
 
 export default async function AdminPaginaPage({
   params,
@@ -43,6 +44,7 @@ export default async function AdminPaginaPage({
         <div className="field">
           <label htmlFor="corpo_html">Conteúdo</label>
           <textarea id="corpo_html" name="corpo_html" rows={16} defaultValue={pagina?.corpo_html ?? ""} />
+          <AnexarArquivo targetId="corpo_html" modo="html" />
         </div>
         <button type="submit" className="btn btn-primary">
           Salvar
