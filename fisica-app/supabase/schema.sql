@@ -174,3 +174,22 @@ insert into public.paginas (slug, titulo, corpo_html) values
   ('astronomia', 'Astronomia', '<p>Em breve.</p>'),
   ('dicas', 'Dicas', '<p>Em breve.</p>')
 on conflict (slug) do nothing;
+
+-- =====================================================================
+-- ARMAZENAMENTO DE ARQUIVOS (upload de PDFs e imagens pelo painel)
+-- =====================================================================
+insert into storage.buckets (id, name, public)
+values ('materiais', 'materiais', true)
+on conflict (id) do nothing;
+
+create policy "materiais_bucket_select" on storage.objects for select
+  using (bucket_id = 'materiais');
+
+create policy "materiais_bucket_insert" on storage.objects for insert
+  with check (bucket_id = 'materiais' and public.papel_atual() = 'professor');
+
+create policy "materiais_bucket_update" on storage.objects for update
+  using (bucket_id = 'materiais' and public.papel_atual() = 'professor');
+
+create policy "materiais_bucket_delete" on storage.objects for delete
+  using (bucket_id = 'materiais' and public.papel_atual() = 'professor');

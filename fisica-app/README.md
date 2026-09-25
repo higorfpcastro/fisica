@@ -76,8 +76,9 @@ inicial do repositório (raiz), não dentro de nenhuma subpasta.
   "Cinemática"), opcionalmente adiciona subtópicos dentro dele (ex.: "MRU",
   "MRUV"), e dentro de cada tópico adiciona os materiais: slides
   incorporados (cole o código `<iframe>` do Google Slides/Canva/PowerPoint
-  Online), vídeos (URL de embed do YouTube), PDFs (link), imagens (URL) ou
-  texto livre.
+  Online), vídeos (URL de embed do YouTube), PDFs e imagens (envie o
+  arquivo direto pelo painel, ou cole um link externo, o que for mais
+  fácil) ou texto livre.
 - **Páginas estáticas** (Cronograma, Horário, Astronomia, Dicas, Contato):
   um campo de texto/HTML simples por página.
 - **Notícias**: funciona como um mini-blog, com título, resumo, imagem de
@@ -88,12 +89,20 @@ Cada tópico/notícia tem um botão que alterna entre "Publicado" e
 "Rascunho" — um rascunho só aparece pra você, logado; o público só vê o
 que estiver como "Publicado".
 
+### Anexar PDFs e imagens
+
+Rode `supabase/migracao_storage.sql` no SQL Editor — ela cria o espaço de
+armazenamento de arquivos no Supabase (gratuito até 1GB no plano free).
+Depois disso, ao adicionar um material do tipo **PDF** ou **Imagem**, use
+o campo "Ou envie um arquivo" para anexar direto do seu computador, em
+vez de precisar hospedar em outro lugar e colar um link.
+
 ### Como incorporar slides (Google Slides, Canva, PowerPoint)
 
 No Google Slides: Arquivo → Publicar na web → Incorporar → copie o código
-`<iframe>...</iframe>` inteiro e cole no campo "Conteúdo" ao adicionar um
-material do tipo **Slide incorporado**. O mesmo vale para Canva
-(Compartilhar → Incorporar) e PowerPoint Online.
+`<iframe>...</iframe>` inteiro e cole no campo "Link, código de embed ou
+texto" ao adicionar um material do tipo **Slide incorporado**. O mesmo
+vale para Canva (Compartilhar → Incorporar) e PowerPoint Online.
 
 ## Deixando pronto para alunos logarem no futuro
 

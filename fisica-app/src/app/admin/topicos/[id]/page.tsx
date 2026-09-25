@@ -47,7 +47,28 @@ async function criarMaterial(formData: FormData) {
   const topico_id = formData.get("topico_id") as string;
   const tipo = formData.get("tipo") as string;
   const titulo = (formData.get("titulo") as string) || null;
-  const conteudo = formData.get("conteudo") as string;
+  let conteudo = ((formData.get("conteudo") as string) || "").trim();
+
+  const arquivo = formData.get("arquivo") as File | null;
+  if (arquivo && arquivo.size > 0) {
+    const extensao = arquivo.name.split(".").pop() || "arquivo";
+    const caminho = `${topico_id}/${Date.now()}.${extensao}`;
+    const { error: erroUpload } = await supabase.storage
+      .from("materiais")
+      .upload(caminho, arquivo, { contentType: arquivo.type });
+
+    if (erroUpload) {
+      redirect(`/admin/topicos/${topico_id}?erro=${encodeURIComponent(erroUpload.message)}`);
+    }
+
+    const { data } = supabase.storage.from("materiais").getPublicUrl(caminho);
+    conteudo = data.publicUrl;
+  }
+
+  if (!conteudo) {
+    redirect(`/admin/topicos/${topico_id}?erro=${encodeURIComponent("Cole um link/código ou envie um arquivo.")}`);
+  }
+
   await supabase.from("materiais").insert({ topico_id, tipo, titulo, conteudo });
   redirect(`/admin/topicos/${topico_id}`);
 }
@@ -66,7 +87,7 @@ export default async function AdminTopicoPage({
   searchParams,
 }: {
   params: { id: string };
-  searchParams: { sucesso?: string };
+  searchParams: { sucesso?: string; erro?: string };
 }) {
   const supabase = createClient();
 
@@ -99,6 +120,11 @@ export default async function AdminTopicoPage({
       {searchParams.sucesso && (
         <div style={{ background: "#e6f3f1", color: "#1f6d63", padding: "10px 14px", borderRadius: 4, margin: "12px 0", fontSize: 13.5 }}>
           Salvo com sucesso.
+        </div>
+      )}
+      {searchParams.erro && (
+        <div style={{ background: "#fbe9e5", color: "#a13f2b", padding: "10px 14px", borderRadius: 4, margin: "12px 0", fontSize: 13.5 }}>
+          Erro: {searchParams.erro}
         </div>
       )}
 
@@ -196,8 +222,8 @@ export default async function AdminTopicoPage({
           <select id="tipo" name="tipo" required defaultValue="embed">
             <option value="embed">Slide incorporado (código de embed)</option>
             <option value="video">Vídeo (URL de embed, ex.: YouTube)</option>
-            <option value="pdf">PDF (link)</option>
-            <option value="imagem">Imagem (URL)</option>
+            <option value="pdf">PDF</option>
+            <option value="imagem">Imagem</option>
             <option value="texto">Texto livre</option>
           </select>
         </div>
@@ -206,14 +232,20 @@ export default async function AdminTopicoPage({
           <input id="mat-titulo" name="titulo" type="text" />
         </div>
         <div className="field">
-          <label htmlFor="conteudo">Conteúdo</label>
+          <label htmlFor="conteudo">Link, código de embed ou texto</label>
           <textarea
             id="conteudo"
             name="conteudo"
-            rows={5}
-            required
-            placeholder="Cole aqui o código <iframe> do Google Slides/Canva, a URL do PDF/imagem, ou o texto"
+            rows={4}
+            placeholder="Cole aqui o código <iframe> do Google Slides/Canva, uma URL, ou o texto — ou deixe em branco e envie um arquivo abaixo"
           />
+        </div>
+        <div className="field">
+          <label htmlFor="arquivo">Ou envie um arquivo (PDF ou imagem)</label>
+          <input id="arquivo" name="arquivo" type="file" accept=".pdf,image/*" />
+          <span style={{ fontSize: 11.5, color: "var(--ink-soft)" }}>
+            Se você enviar um arquivo aqui, ele é usado no lugar do link colado acima.
+          </span>
         </div>
         <button type="submit" className="btn btn-primary">
           Adicionar material
